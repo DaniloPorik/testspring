@@ -1,6 +1,6 @@
 package com.porik.udemyspring.controller;
 
-import com.porik.udemyspring.exception.UnsupportedMathOperationException;
+import com.porik.udemyspring.exception.ResourceNotFoundException;
 import com.porik.udemyspring.utils.NumberConverter;
 import com.porik.udemyspring.utils.SimpleMath;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ public class MathController {
     public Double sum(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
 
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.sum(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
@@ -24,7 +24,7 @@ public class MathController {
     public Double subtraction(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
 
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.sub(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
@@ -33,7 +33,7 @@ public class MathController {
     @RequestMapping(value = "/multiplication/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double multiplication(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo){
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.multi(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
@@ -42,7 +42,7 @@ public class MathController {
     @RequestMapping(value = "/division/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double division(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.div(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
@@ -51,7 +51,7 @@ public class MathController {
     @RequestMapping(value = "/mean/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double mean(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
         if(!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.mean(NumberConverter.convertToDouble(numberOne), NumberConverter.convertToDouble(numberTwo));
@@ -60,7 +60,7 @@ public class MathController {
     @RequestMapping(value = "/squareRoot/{numberOne}", method = RequestMethod.GET)
     public Double squareRoot(@PathVariable("numberOne") String numberOne) throws Exception {
         if(!NumberConverter.isNumeric(numberOne)){
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
 
         return math.sqrt(NumberConverter.convertToDouble(numberOne));
