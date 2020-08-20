@@ -1,4 +1,4 @@
-package com.porik.udemyspring.model;
+package com.porik.udemyspring.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
