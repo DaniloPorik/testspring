@@ -66,6 +66,18 @@
             <version>6.5.0</version>
         </dependency>
 
+        <!-- Serialization de XML PS:Esta sendo usado para converter/aceitar XML na API -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+
+        <!-- Serialization de YML PS:Esta sendo usado para converter/aceitar YML na API -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
