@@ -1,7 +1,7 @@
 package com.porik.udemyspring.converter.mocks;
 
 import com.porik.udemyspring.data.model.Person;
-import com.porik.udemyspring.data.vo.PersonVO;
+import com.porik.udemyspring.data.vo.v1.PersonVO;
 
 import java.util.ArrayList;
 import java.util.List;

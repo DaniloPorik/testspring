@@ -1,22 +1,28 @@
-package com.porik.udemyspring.data.vo;
+package com.porik.udemyspring.data.vo.v1;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"}) //Muda a ordem como os atributos aparece na resposta da API
 public class PersonVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
+    @JsonProperty("last_name") //Muda o nome como o atributo aparece na resposta da API
     private String firstName;
 
+    @JsonProperty("last_name") //Muda o nome como o atributo aparece na resposta da API
     private String lastName;
 
     private String address;
 
+    @JsonIgnore //Ignora o atributo, ele não aparecerá na resposta da API
     private String gender;
 
     public PersonVO() {

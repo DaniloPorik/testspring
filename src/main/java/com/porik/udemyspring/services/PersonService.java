@@ -1,7 +1,7 @@
 package com.porik.udemyspring.services;
 
 import com.porik.udemyspring.converter.DozerConverter;
-import com.porik.udemyspring.data.vo.PersonVO;
+import com.porik.udemyspring.data.vo.v1.PersonVO;
 import com.porik.udemyspring.exception.ResourceNotFoundException;
 import com.porik.udemyspring.data.model.Person;
 import com.porik.udemyspring.repository.PersonRepository;

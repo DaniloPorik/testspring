@@ -1,6 +1,6 @@
 package com.porik.udemyspring.controller;
 
-import com.porik.udemyspring.data.vo.PersonVO;
+import com.porik.udemyspring.data.vo.v1.PersonVO;
 import com.porik.udemyspring.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired

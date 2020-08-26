@@ -2,7 +2,7 @@ package com.porik.udemyspring.converter;
 
 import com.porik.udemyspring.converter.mocks.MockPerson;
 import com.porik.udemyspring.data.model.Person;
-import com.porik.udemyspring.data.vo.PersonVO;
+import com.porik.udemyspring.data.vo.v1.PersonVO;
 
 import org.junit.Assert;
 import org.junit.Before;
