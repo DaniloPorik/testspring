@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo;
+//import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn;
+
 @RestController
 @RequestMapping("/api/person/v1")
 public class PersonController {
@@ -17,13 +20,21 @@ public class PersonController {
 
     @GetMapping(produces = { "application/json", "application/xml" })
     public List<PersonVO> findAll() {
+//        List<PersonVO> persons = service.findAll();
+//        persons.stream()
+//        .forEach(p -> p.add(
+//              .linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()
+//              )
+//          );
+//      return persons
 
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
     public PersonVO findById(@PathVariable("id") Long id) {
-
+//        PersonVO personVO = service.findById(id);
+//        personVO.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
         return service.findById(id);
     }
 
