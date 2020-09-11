@@ -11,6 +11,7 @@ import java.util.List;
 //import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo;
 //import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn;
 
+//@CrossOrigin  //CORS
 @RestController
 @RequestMapping("/api/person/v1")
 public class PersonController {
@@ -31,6 +32,7 @@ public class PersonController {
         return service.findAll();
     }
 
+    //@CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
     public PersonVO findById(@PathVariable("id") Long id) {
 //        PersonVO personVO = service.findById(id);
@@ -38,6 +40,7 @@ public class PersonController {
         return service.findById(id);
     }
 
+    //@CrossOrigin(origins = {"http://localhost:8080", "http://www.erudio.com.br"})
     @PostMapping(produces = { "application/json", "application/xml", "application/x-yaml" },
                     consumes = { "application/json", "application/xml", "application/x-yaml" })
     public PersonVO create(@RequestBody PersonVO person) {

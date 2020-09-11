@@ -10,7 +10,7 @@ import org.springframework.hateoas.RepresentationModel;
 import java.io.Serializable;
 import java.util.Objects;
 
-@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"}) //Muda a ordem como os atributos aparece na resposta da API
+@JsonPropertyOrder({"id", "first_name", "last_name", "address", "gender"}) //Muda a ordem como os atributos aparece na resposta da API
 public class PersonVO extends RepresentationModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
