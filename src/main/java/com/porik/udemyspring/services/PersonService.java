@@ -7,6 +7,7 @@ import com.porik.udemyspring.data.model.Person;
 import com.porik.udemyspring.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -51,6 +52,14 @@ public class PersonService {
         //PersonVO
         var vo = DozerConverter.parseObject(repository.save(entity), PersonVO.class);
         return vo;
+    }
+
+    @Transactional  //Essa notacao define para o SPRING, q irá fazer transação no BD, é uma alteração nossa, customizada, por isso a necessidade
+    public PersonVO disablePerson(Long id) {
+        repository.disablePersons(id);
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+        return DozerConverter.parseObject(entity, PersonVO.class);
     }
 
     public void delete(Long id) {
