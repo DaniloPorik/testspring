@@ -3,6 +3,10 @@ package com.porik.udemyspring.controller;
 import com.porik.udemyspring.data.vo.v1.PersonVO;
 import com.porik.udemyspring.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +23,28 @@ public class PersonController {
     @Autowired
     private PersonService service;
 
+//    @GetMapping(produces = { "application/json", "application/xml" })
+//    public List<PersonVO> findAll() {
+////        List<PersonVO> persons = service.findAll();
+////        persons.stream()
+////        .forEach(p -> p.add(
+////              .linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()
+////              )
+////          );
+////      return persons
+//
+//        return service.findAll();
+//    }
+
     @GetMapping(produces = { "application/json", "application/xml" })
-    public List<PersonVO> findAll() {
+    public List<PersonVO> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+                                  @RequestParam(value = "limit", defaultValue = "12") int limit,
+                                  @RequestParam(value = "direction", defaultValue = "asc") String direction) {
+
+        var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+
+        Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"));
+
 //        List<PersonVO> persons = service.findAll();
 //        persons.stream()
 //        .forEach(p -> p.add(
@@ -29,7 +53,7 @@ public class PersonController {
 //          );
 //      return persons
 
-        return service.findAll();
+        return service.findAll(pageable);
     }
 
     //@CrossOrigin(origins = "http://localhost:8080")
@@ -69,5 +93,29 @@ public class PersonController {
 
         return ResponseEntity.ok().build();
     }
+
+//    @GetMapping(value = "/findPersonByName/{firstName}", produces = { "application/json", "application/xml", "application/x-yaml" })
+//    public ResponseEntity<?> findPersonByName(
+//            @PathVariable("firstName") String firstName,
+//            @RequestParam(value="page", defaultValue = "0") int page,
+//            @RequestParam(value="limit", defaultValue = "12") int limit,
+//            @RequestParam(value="direction", defaultValue = "asc") String direction) {
+//
+//        var sortDirection = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+//
+//        Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"));
+//
+//        Page<PersonVO> persons =  service.findPersonByName(firstName, pageable);
+//        persons
+//                .stream()
+//                .forEach(p -> p.add(
+//                        linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()
+//                        )
+//                );
+//
+//        PagedResources<?> resources = assembler.toResource(persons);
+//
+//        return new ResponseEntity<>(resources, HttpStatus.OK);
+//    }
 
 }
