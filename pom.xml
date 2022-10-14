@@ -9,10 +9,10 @@
         <version>2.3.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.udemyspring</groupId>
-    <artifactId>udemyspring</artifactId>
+    <groupId>com.testspring</groupId>
+    <artifactId>testspring</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>udemyspring</name>
+    <name>testspring</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -133,7 +133,7 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <configuration>
-                    <url>jdbc:mysql://localhost/springudemy?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
+                    <url>jdbc:mysql://localhost/springtest?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
                     <user>root</user>
                     <password>tegsw7ad</password>
                 </configuration>
